@@ -144,3 +144,5 @@ spec:
               
       ----------------------------------------------------------
 kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+
+kubectl get svc -n ingress-basic
