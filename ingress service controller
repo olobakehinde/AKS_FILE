@@ -50,7 +50,8 @@ spec:
   - port: 80
   selector:
     app: aks-helloworld-one
-    
+    -----------------------------------------------------------------------------------------------------
+    kubectl get po,svc
    -------------------------------------------------------------------------------------(aks-helloworld-two.yaml}
    apiVersion: apps/v1
 kind: Deployment
