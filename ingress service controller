@@ -1,18 +1,29 @@
-kubectl delete deployments.apps ingress-nginx-controller --namespace ingress-basic
+kubectl delete deployments.apps podname "ingress-nginx-controller" --namespace "ingress-basic"
+kubectl get svc -n ingress-basic
+
+kubectl delete ns "nameofthespace"
+kubectl get deployments.apps -n ingress-basic
+
+kubectl describe pod ingress-nginx-controller-844bd44958-kpxhm --namespace ingress-basic
 
 NAMESPACE=ingress-basic
 
+snap install helm --classic
+
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
+helm repo list
+
+kubectl get deployment.apps
 
 helm install  ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-basic \
   --set controller.replicaCount=2 \
-  --set controller.nodeSelector."kubernetes\.io/os"=linux \
-  --set defaultBackend.nodeSelector."kubernetes\.io/os"=linux \
+  --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+  --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
   --set controller.service.externalTrafficPolicy=Local \
   
-  kubectl get all -n " namespace for service "
+  kubectl get all -n ingress-basic 
   
   kubectl --namespace ingress-basic get services -o wide -w ingress-nginx-controller
   
@@ -150,4 +161,4 @@ spec:
       ----------------------------------------------------------
 kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
-kubectl get svc -n ingress-basic
+
